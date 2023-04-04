@@ -53,13 +53,20 @@ namespace Etwin1.Controllers
             else
             {
                 ViewBag.username = string.Format("Login Failed ", username);
-                //return View(username);
-                return View("WelcomeView.cshtmlWelcomeView.cshtml");
+               
+                return View("Loginview");
             }
            
         }
 
         public ActionResult Welcome()
+        {
+
+            var data = TempData["Key"];
+            TempData.Keep("Key");
+            return View();
+        }
+        public ActionResult Department()
         {
 
             var data = TempData["Key"];

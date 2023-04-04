@@ -25,11 +25,13 @@
                     <img src="../images/BackgroundLogin.jpg" class="img-fluid" />
                 </div>
             </div>
+            <div><h1> @ViewBag.username</h1></div>
             <div class="col-12 col-md-6 col-lg-6 p-0 mobile_bg">
                 <div class="login_form">
                     <div class="logo_div pb-4 ">
                         <a href="index.html"><img src="./images/login_logo.png" alt="" class="" /></a>
                     </div>
+                    <img src="~/images/logo.png" />
                     <form>
                         <div class="form-group">
                             <span class="user_icon"></span>
@@ -95,8 +97,11 @@
 </div>
 <script type="text/javascript">
     function login() {
-       
-        //Set the URL.
+    @if (@ViewBag.username != null)
+    {
+        
+    }
+    //Set the URL.
         $.ajax({
             url: "/Login/Loginview",
             type: 'POST',
@@ -107,10 +112,8 @@
             }
         }).done(function (response) {
             if (response) {
-                var url = '@Url.Action("Welcome", "Login")';
-                alert(url)
+                var url = '@Url.Action("Department", "Login")';
                 window.location.href = url;
-                
             }
             else {
                 alert("Invalid Form data!");
@@ -121,10 +124,12 @@
 
 
 
-@if (@ViewBag.Message != null)
+@if (@ViewBag.username != null)
     {
         <script type="text/javascript">
             $(function () {
+            var url = '@Url.Action("Loginview", "Login")';
+            window.location.href = url;
                 alert("@ViewBag.Message")
             });
         </script>

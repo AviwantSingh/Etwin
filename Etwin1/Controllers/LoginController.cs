@@ -1,16 +1,7 @@
 ﻿using Etwin.BAL.Services;
-using EtwLogin.Repository;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using System.Net.Http;
-
-using System.Web;
-using EtwLogin.Models;
-using Microsoft.VisualStudio.Web.CodeGeneration.Contracts.Messaging;
 
 
 namespace Etwin1.Controllers

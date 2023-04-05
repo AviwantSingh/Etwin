@@ -25,10 +25,12 @@
                     <img src="../images/BackgroundLogin.jpg" class="img-fluid" />
                 </div>
             </div>
-            <div><h1> @ViewBag.username</h1></div>
+
+         
             <div class="col-12 col-md-6 col-lg-6 p-0 mobile_bg">
                 <div class="login_form">
                     <div class="logo_div pb-4 ">
+                        <label class="rme_class" id="showmsg"</label>
                         <a href="index.html"><img src="./images/login_logo.png" alt="" class="" /></a>
                     </div>
                     <img src="~/images/logo.png" />
@@ -97,40 +99,26 @@
 </div>
 <script type="text/javascript">
     function login() {
-    @if (@ViewBag.username != null)
-    {
-        
-    }
-    //Set the URL.
+        //Set the URL.
         $.ajax({
             url: "/Login/Loginview",
             type: 'POST',
-             contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
             data: { //Passing data
                 UserName: $("#uname").val(), //Reading text box values using Jquery
                 Password: $("#pwd").val(),
             }
         }).done(function (response) {
-            if (response) {
+            if (response.message != null) {
+                $("#showmsg").html(response.message);
+            }
+            else {
                 var url = '@Url.Action("Department", "Login")';
                 window.location.href = url;
             }
-            else {
-                alert("Invalid Form data!");
-            }
         });
     }
-    </script>
+</script>
 
 
 
-@if (@ViewBag.username != null)
-    {
-        <script type="text/javascript">
-            $(function () {
-            var url = '@Url.Action("Loginview", "Login")';
-            window.location.href = url;
-                alert("@ViewBag.Message")
-            });
-        </script>
-    }
